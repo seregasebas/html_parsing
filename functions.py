@@ -3,7 +3,7 @@ import json
 def get_info_about_group(name_group, name_group_discription):
     return name_group.a.text, name_group.a.get('href'), name_group_discription.p.text
 
-def get_info_all_group_on_the_page(name_group, name_group_discription, domain, url):
+def get_info_all_group_on_the_page(name_group, name_group_discription, domain):
     name_artis = []
     url_artist = []
     discription_artis = []
@@ -12,7 +12,7 @@ def get_info_all_group_on_the_page(name_group, name_group_discription, domain, u
         try:
             name, url_art, discrip = get_info_about_group(name_group[i], name_group_discription[i])
             name_artis.append(name)
-            url_artist.append(domain+url+url_art)
+            url_artist.append(domain+str(url_art).replace(' ', '+'))
             discription_artis.append(discrip)
         except AttributeError:
             print(f'{name_group[i]} {name_group_discription[i]}')
