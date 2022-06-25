@@ -2,8 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 import functions
 
-domain = 'https://www.last.fm/'
-url = 'ru/tag/rock/artists'
+domain = 'https://www.last.fm'
+url = '/ru/tag/rock/artists'
 page_str = '?page='
 page_number = 1
 
@@ -22,7 +22,7 @@ for i in range(1,49):
     # Поиск по классу -берем описание
     name_group_discription = soup.find_all('div', class_='big-artist-list-bio')
     #создаем списки из названий, ссылок и описаниий
-    name_artist, url_artist, discription_artis = functions.get_info_all_group_on_the_page(name_group, name_group_discription, domain, url)
+    name_artist, url_artist, discription_artis = functions.get_info_all_group_on_the_page(name_group, name_group_discription, domain)
     #конкантинируем в финальные словари
     name_group_res += name_artist
     url_group += url_artist
